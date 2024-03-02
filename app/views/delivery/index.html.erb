@@ -98,7 +98,7 @@
    <% if delivery.arrived %>
    <li>
      <%= delivery.description %><br>
-     Updated <%= delivery.updated_at %> <a href="/delivery/delete">Delete</a>
+     Updated <%= delivery.updated_at %> <a href="/delete_delivery/<%=delivery.id%>">Delete</a>
    </li>
    <% end %>
  <% end %>

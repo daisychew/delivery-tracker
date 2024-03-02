@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   post("modify_delivery/:id", controller: "delivery", action: "receive")
  
-  get("delivery/delete", controller: "delivery", action: "delete")
+  get("delete_delivery", controller: "delivery", action: "delete")
  
   # Defines the root path route ("/")
   root "delivery#index"

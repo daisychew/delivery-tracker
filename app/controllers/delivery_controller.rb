@@ -32,6 +32,10 @@ class DeliveryController < ApplicationController
  
  
   def delete
+    delivery_id = params.fetch(:id)
+    delivery = Delivery.where(id: delivery_id).at(0)
+    delivery.destroy
+    
     redirect_to("/")
   end
  end
