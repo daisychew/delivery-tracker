@@ -15,6 +15,7 @@ class DeliveryController < ApplicationController
 
     if delivery.supposed_to_arrive_on != nil && delivery.description != nil
       delivery.save
+      flash[:notice] = "Added to list"
     end
  
     redirect_to("/")
@@ -35,7 +36,7 @@ class DeliveryController < ApplicationController
     delivery_id = params.fetch(:id)
     delivery = Delivery.where(id: delivery_id).at(0)
     delivery.destroy
-    
+
     redirect_to("/")
   end
  end
