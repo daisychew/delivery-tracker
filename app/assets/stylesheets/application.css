@@ -15,6 +15,7 @@
  */
 body {
     padding: 10px 
+    font-family: Roboto; 
 }
 
  .notice {
@@ -40,17 +41,22 @@ form textarea {
   margin-bottom: 10px; /* Add margin below each input field */
   margin: 0 auto;
   padding: 8px; /* Add padding to input fields and textarea */
-  border-radius: 5px; /* Add rounded corners to input fields and textarea */
+  border-radius: 3px; /* Add rounded corners to input fields and textarea */
   border: 1px solid #ced4da; /* Add border to input fields and textarea */
+}
+
+#date_box {
+  width: 108px;
+  height: 30px;
 }
 
 form button {
   background-color: #333465;
   color: white;
   border: none; /* Remove default button border */
-  border-radius: 5px; /* Add rounded corners to buttons */
+  border-radius: 2px; /* Add rounded corners to buttons */
   cursor: pointer; /* Change cursor to pointer on hover */
-  padding: 10px 20px;
+  padding: 5px 12px;
 }
 
 .waiting_on,
@@ -64,6 +70,7 @@ form button {
 .received ul {
   list-style-type: none; /* Remove default bullet points from lists */
   padding: 0; /* Remove default padding from lists */
+  column-count: 3;
 }
 
 .waiting_on li,

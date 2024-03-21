@@ -13,12 +13,11 @@
  <% if current_user != nil %>
  <form action="insert_delivery" method="post">
    <div>
-     <label for="description_box">
+     <label for="tracking_box">
          Description
      </label>
      <input type="text" id="description_box" name="query_description">
    </div>
-
 
    <div>
      <label for="date_box">
@@ -35,8 +34,7 @@
      <textarea id="details_box" name="query_details" rows="3"></textarea>
    </div>
 
-
-   <button>
+   <button style="padding: 12px 40px">
      Log delivery
    </button>
  </form>
