@@ -13,3 +13,60 @@
  *= require_tree .
  *= require_self
  */
+body {
+    padding: 10px 
+}
+
+ .notice {
+  background-color: #f8d7da; /* Red background color for notice messages */
+  color: #721c24; /* Dark red text color */
+  padding: 10px; /* Add padding around the notice message */
+  margin-bottom: 15px; /* Add margin below the notice message */
+}
+
+form {
+  margin-bottom: 20px; /* Add margin below the form */
+}
+
+form label {
+  display: block; /* Display labels as block elements for better spacing */
+  margin-bottom: 5px; /* Add margin below each label */
+}
+
+form input[type="text"],
+form input[type="date"],
+form textarea {
+  width: 70%; /* Make input fields and textarea full width */
+  margin-bottom: 10px; /* Add margin below each input field */
+  margin: 0 auto;
+  padding: 8px; /* Add padding to input fields and textarea */
+  border-radius: 5px; /* Add rounded corners to input fields and textarea */
+  border: 1px solid #ced4da; /* Add border to input fields and textarea */
+}
+
+form button {
+  background-color: #333465;
+  color: white;
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Add rounded corners to buttons */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  padding: 10px 20px;
+}
+
+.waiting_on,
+.received, .centered-section {
+  margin-bottom: 30px; /* Add margin below the waiting_on and received sections */
+  display: block;
+  text-align: center;
+}
+
+.waiting_on ul,
+.received ul {
+  list-style-type: none; /* Remove default bullet points from lists */
+  padding: 0; /* Remove default padding from lists */
+}
+
+.waiting_on li,
+.received li {
+  margin-bottom: 10px; /* Add margin below each list item */
+}

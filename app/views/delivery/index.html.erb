@@ -1,21 +1,8 @@
-<a href="/">Delivery Tracker</a> | <a href="users/edit">Edit profile</a> | <a href="users/sign_out">Sign out</a>
-<hr>
 <% if flash[:notice] %>
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<div>
- <h1>
-   Delivery Tracker
- </h1>
-</div>
-
-
-<div>Know if something gets lost in the mail.</div>
-<hr>
-
-
-<div>
+<div class="centered-section">
  <div>
    <h2>
      Expecting a package?
@@ -100,7 +87,7 @@
    <% if delivery.arrived %>
    <li>
      <%= delivery.description %><br>
-     Updated <%= delivery.updated_at %> <a href="/delete_delivery/<%=delivery.id%>">Delete</a>
+     Updated <%= time_ago_in_words(delivery.updated_at) %> ago <a href="/delete_delivery/<%=delivery.id%>">Delete</a>
    </li>
    <% end %>
  <% end %>
