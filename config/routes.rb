@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get("delivery/all", controller: "delivery", action: "index")
+  # Waiting on deliveries
+  get("/waiting_on", controller: "waiting_on", action: "index")
   
-  get("delivery/:id", controller: "delivery", action: "show")
+  get("waiting_on/:id", controller: "waiting_on", action: "show")
+
+  # Arrived deliveries
+
+  get("/arrived", controller: "arrived", action: "index")
+  
+  get("arrived/:id", controller: "arrived", action: "show")
+
+  # Updating deliveries
 
   post("insert_delivery", { :controller => "delivery", :action => "create" })
 
