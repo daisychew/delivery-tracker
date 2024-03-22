@@ -11,3 +11,4 @@ class WaitingOnController < ApplicationController
 
     render(template: "waiting_on/show")
   end
+end

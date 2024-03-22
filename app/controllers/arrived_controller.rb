@@ -11,3 +11,4 @@ class ArrivedController < ApplicationController
 
     render(template: "arrived/show")
   end
+end
