@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Delivery Tracker 1</title>
+    <title>Delivery Tracker</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -29,22 +29,33 @@
     <nav class="navbar navbar-expand-lg bg-light mb-5">
         <div class="container">
             <a class="navbar-brand" href="/">Delivery Tracker</a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="waiting_on/index">Waiting on packages</a>
+                      <a class="nav-link active" aria-current="page" href="/waiting_on">Waiting on packages</a>
                     </li>
+
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="arrived/index">Arrived packages</a>
+                      <a class="nav-link active" aria-current="page" href="/arrived">
+                      Arrived packages
+                      </a>
                     </li>
+
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="users/edit">Edit profile</a>
+                      <a class="nav-link active" aria-current="page" href="users/edit">
+                      Edit profile
+                      </a>
                     </li>
+
                     <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="users/sign_out">Sign out</a>
+                      <a class="nav-link active" aria-current="page" href="users/sign_out">
+                      Sign out
+                      </a>
                     </li>
                 </ul>
             </div>

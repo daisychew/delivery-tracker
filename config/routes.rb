@@ -3,13 +3,13 @@ Rails.application.routes.draw do
   # Waiting on deliveries
   get("/waiting_on", controller: "waiting_on", action: "index")
   
-  get("waiting_on/:id", controller: "waiting_on", action: "show")
+  get("/waiting_on/:id", controller: "waiting_on", action: "show")
 
   # Arrived deliveries
 
   get("/arrived", controller: "arrived", action: "index")
   
-  get("arrived/:id", controller: "arrived", action: "show")
+  get("/arrived/:id", controller: "arrived", action: "show")
 
   # Updating deliveries
 

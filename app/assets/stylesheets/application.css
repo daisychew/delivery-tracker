@@ -73,8 +73,8 @@ form button {
   column-count: 3;
 }
 
-.waiting_on li,
-.received li {
-  margin-bottom: 60px; 
+.waiting_on li:not(:last-child),
+.received li:not(:last-child) {
+  margin-bottom: 50px; 
   break-inside: avoid-column;
 }
