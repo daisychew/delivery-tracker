@@ -14,24 +14,24 @@
  *= require_self
  */
 body {
-    padding: 10px 
+    padding: 10px; 
     font-family: Roboto; 
 }
 
  .notice {
-  background-color: #f8d7da; /* Red background color for notice messages */
-  color: #721c24; /* Dark red text color */
-  padding: 10px; /* Add padding around the notice message */
-  margin-bottom: 15px; /* Add margin below the notice message */
+  background-color: #f8d7da; 
+  color: #721c24; 
+  padding: 10px; 
+  margin-bottom: 15px; 
 }
 
 form {
-  margin-bottom: 20px; /* Add margin below the form */
+  margin-bottom: 20px; 
 }
 
 form label {
   display: block; /* Display labels as block elements for better spacing */
-  margin-bottom: 5px; /* Add margin below each label */
+  margin-bottom: 5px; 
 }
 
 form input[type="text"],
@@ -75,5 +75,6 @@ form button {
 
 .waiting_on li,
 .received li {
-  margin-bottom: 10px; /* Add margin below each list item */
+  margin-bottom: 60px; 
+  break-inside: avoid-column;
 }
