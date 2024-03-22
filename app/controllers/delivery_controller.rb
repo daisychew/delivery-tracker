@@ -1,10 +1,20 @@
 class DeliveryController < ApplicationController
+  def homepage
+    render(template: "delivery/homepage")
+  end
+  
   def index
     @deliveries = Delivery.all
  
     render({ :template => "delivery/index" })
   end
  
+  def show
+    @deliveries = Delivery.all
+    delivery_id = params.fetch(:id)
+
+    render(template: "delivery/show")
+  end
  
   def create
     delivery = Delivery.new
