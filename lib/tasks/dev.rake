@@ -11,12 +11,15 @@ task({ :sample_data => :environment}) do
     user.password = "password"
     user.save
 
+    chars = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
+    random_string = ''
+
     10.times do
       delivery = Delivery.new
       delivery.user_id = user.id
-      delivery.description = Faker::Commerce.product_name
-      delivery.details = "USPS tracking ##{rand(1000000000000)}" if rand < 0.5
-      delivery.supposed_to_arrive_on = Faker::Date.between(from: 1.month.ago, to: 2.weeks.from_now)
+      delivery.notes = Faker::Commerce.product_name
+      delivery.tracking_number = "USPS tracking ##{rand(1000000000000)}" 
+      delivery.order_number = (0...8).map { chars[rand(chars.length)] }.join
 
       if delivery.supposed_to_arrive_on < Time.now
         delivery.arrived = [true, false].sample
