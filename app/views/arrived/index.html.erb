@@ -10,7 +10,7 @@
  <% @deliveries.each do |delivery| %>
    <% if delivery.arrived %>
    <li>
-     <%= delivery.description %><br>
+     <%= delivery.notes %><br>
      Updated <%= time_ago_in_words(delivery.updated_at) %> ago <a href="/delete_delivery/<%=delivery.id%>">Delete</a>
    </li>
    <% end %>

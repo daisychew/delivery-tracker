@@ -20,12 +20,7 @@ task({ :sample_data => :environment}) do
       delivery.notes = Faker::Commerce.product_name
       delivery.tracking_number = "USPS tracking ##{rand(1000000000000)}" 
       delivery.order_number = (0...8).map { chars[rand(chars.length)] }.join
-
-      if delivery.supposed_to_arrive_on < Time.now
-        delivery.arrived = [true, false].sample
-      else
-        delivery.arrived = false
-      end
+      delivery.arrived = [true, false].sample
 
       delivery.save
     end

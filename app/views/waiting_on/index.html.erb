@@ -10,10 +10,10 @@
  <% @deliveries.each do |delivery| %>
    <% if delivery.arrived == false %>
    <li>
-     <%= delivery.description %><br>
-     Supposed to arrive on <%= delivery.supposed_to_arrive_on %><br>
-     <% if delivery.details != nil %>
-       <%= delivery.details %><br>
+     <%= delivery.tracking_number %><br>
+     Order no. <%= delivery.order_number %><br>
+     <% if delivery.notes != nil %>
+       <%= delivery.notes %><br>
      <% end %>
      <form action="/modify_delivery/<%=delivery.id%>" method="post">
       <input type="hidden" name="arrived" value="true">
