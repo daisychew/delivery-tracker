@@ -4,10 +4,14 @@ class DeliveryController < ApplicationController
   end
 
   def index
+    @deliveries = Delivery.all
+    
     render(template: "delivery/index")
   end
 
   def show
+    delivery_id = params.fetch(:id)
+
     render(template: "delivery/show")
   end
  
