@@ -1,48 +1,44 @@
-<div class="waiting_on">
+<div>
  <div>
-   <h2>
-     Waiting on
-   </h2>
+   <h2 class="centered-section">
+     All packages
+    </h2>
  </div>
 <hr>
 
- <ul>
- <% @deliveries.each do |delivery| %>
-   <% if delivery.arrived == false %>
-   <li>
-     <%= delivery.tracking_number %><br>
-     Order no. <%= delivery.order_number %><br>
-     <% if delivery.notes != nil %>
-       <%= delivery.notes %><br>
-     <% end %>
-     <form action="/modify_delivery/<%=delivery.id%>" method="post">
-      <input type="hidden" name="arrived" value="true">
+<div>
+<table>
+    <thead>
+      <tr>
+        <th>USPS Tracking Number</th>
+        <th>Order ID</th>
+        <th>Notes</th>
+        <th>Status</th>
+        <th>Estimated Delivery Date
+      </tr>
+    </thead>
 
-      <button>Mark as received</button>
-    </form>
-   </li>
-   <% end %>
- <% end %>
- </ul>
-</div>
+    <tbody>
+      <% @deliveries.each do |delivery| %>
+          <tr>
+            <td><%= delivery.tracking_number %></td>
+            <td><%= delivery.order_number %></td>
+            <td><%= delivery.notes %></td>
 
-
-<div class="received">
- <div>
-   <h2>
-     Received
-   </h2>
- </div>
-<hr>
-
- <ul>
- <% @deliveries.each do |delivery| %>
-   <% if delivery.arrived %>
-   <li>
-     <%= delivery.notes %><br>
-     Updated <%= time_ago_in_words(delivery.updated_at) %> ago <a href="/delete_delivery/<%=delivery.id%>">Delete</a>
-   </li>
-   <% end %>
- <% end %>
- </ul>
+            <% if !delivery.arrived %>
+            <td>
+              <form action="/modify_delivery/<%= delivery.id %>" method="post">
+                <input type="hidden" name="arrived" value="true">
+                <button type="submit">Mark as received</button>
+              </form>
+            </td>
+            <% else %>
+            <td>
+              Delivered
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 </div>

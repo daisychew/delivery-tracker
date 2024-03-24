@@ -18,6 +18,12 @@ body {
     font-family: Roboto; 
 }
 
+.centered-section {
+  margin-bottom: 30px; /* Add margin below the waiting_on and received sections */
+  display: block;
+  text-align: center;
+}
+
  .notice {
   background-color: #f8d7da; 
   color: #721c24; 
@@ -32,6 +38,7 @@ form {
 form label {
   display: block; /* Display labels as block elements for better spacing */
   margin-bottom: 5px; 
+  padding: 10px;
 }
 
 form input[type="text"],
@@ -44,15 +51,6 @@ form textarea {
   border: 1px solid #ced4da; /* Add border to input fields and textarea */
 }
 
-label {
-  padding: 10px;
-}
-
-#date_box {
-  width: 120px;
-  height: 30px;
-}
-
 form button {
   background-color: #333465;
   color: white;
@@ -63,22 +61,7 @@ form button {
   margin-top: 10px;
 }
 
-.waiting_on,
-.received, .centered-section {
-  margin-bottom: 30px; /* Add margin below the waiting_on and received sections */
-  display: block;
-  text-align: center;
-}
-
-.waiting_on ul,
-.received ul {
-  list-style-type: none; /* Remove default bullet points from lists */
-  padding: 0; /* Remove default padding from lists */
-  column-count: 3;
-}
-
-.waiting_on li:not(:last-child),
-.received li:not(:last-child) {
-  margin-bottom: 50px; 
-  break-inside: avoid-column;
+table {
+  width: 90%; 
+  margin: 0 auto;
 }
