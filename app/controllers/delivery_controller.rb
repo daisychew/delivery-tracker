@@ -2,6 +2,14 @@ class DeliveryController < ApplicationController
   def homepage
     render(template: "delivery/homepage")
   end
+
+  def index
+    render(template: "delivery/index")
+  end
+
+  def show
+    render(template: "delivery/show")
+  end
  
   def create
     delivery = Delivery.new
