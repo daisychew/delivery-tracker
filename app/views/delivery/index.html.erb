@@ -10,19 +10,23 @@
 <table>
     <thead>
       <tr>
+      <th><%= check_box_tag 'select_all', 'all', false, id: 'selectAllCheckbox' %></th>
         <th>USPS Tracking Number</th>
         <th>Order ID</th>
         <th>Notes</th>
         <th>Status</th>
-        <th>Estimated Delivery Date
+        <th>Estimated Delivery Date</th>
       </tr>
     </thead>
 
     <tbody>
       <% @deliveries.each do |delivery| %>
           <tr>
+            <td>
+              <%= check_box_tag 'selected_packages[]', delivery.id %>
+            </td>
             <td><%= delivery.tracking_number %></td>
-            <td><%= delivery.order_number %></td>
+            <td>#<%= delivery.order_number %></td>
             <td><%= delivery.notes %></td>
 
             <% if !delivery.arrived %>
@@ -42,3 +46,32 @@
     </tbody>
   </table>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var selectAllCheckbox = document.getElementById('selectAllCheckbox');
+    console.log(selectAllCheckbox)
+    if (selectAllCheckbox) {
+      selectAllCheckbox.addEventListener('change', function() {
+        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        console.log(checkboxes)
+        checkboxes.forEach(function(checkbox) {
+          checkbox.checked = selectAllCheckbox.checked;
+        });
+      });
+    }
+
+    var packageCheckboxes = document.querySelectorAll('.package-checkbox');
+    packageCheckboxes.forEach(function(checkbox) {
+      checkbox.addEventListener('change', function() {
+        var allChecked = true;
+        packageCheckboxes.forEach(function(checkbox) {
+          if (!checkbox.checked) {
+            allChecked = false;
+          }
+        });
+        selectAllCheckbox.checked = allChecked;
+      });
+    });
+  });
+</script>

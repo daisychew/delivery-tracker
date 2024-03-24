@@ -61,6 +61,12 @@ form button {
   margin-top: 10px;
 }
 
+input[type="checkbox"] {
+  width: 15px; /* Set width of checkboxes */
+  height: 15px; /* Set height of checkboxes */
+  margin-right: 5px; /* Add some spacing between checkboxes and their labels */
+}
+
 table {
   width: 90%; 
   margin: 0 auto;
