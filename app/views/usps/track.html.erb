@@ -1,0 +1,7 @@
+<h1>USPS Tracking Information</h1>
+
+<% if @tracking_info.present? %>
+  <p><%= @tracking_info %></p>
+<% else %>
+  <p>No tracking information available</p>
+<% end %>
