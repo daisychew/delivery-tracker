@@ -1,5 +1,6 @@
 class TrackingController < ApplicationController
   require 'httparty'
+  require 'dotenv/load'
   
   BASE_URI = 'https://api.trackingmore.com/v4'
 
