@@ -4,6 +4,7 @@
 #
 #  id              :integer          not null, primary key
 #  arrived         :boolean
+#  delivery_date   :date
 #  notes           :string
 #  order_number    :string
 #  tracking_number :string
