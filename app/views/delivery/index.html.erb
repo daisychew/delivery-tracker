@@ -7,17 +7,28 @@
 <hr>
 
 <div>
-<table>
+  <form action="/modify_delivery" method="post">
+    <label for="action">Select Action:</label>
+    <select name="action" id="action">
+      <option value="mark_as_received">Mark as Received</option>
+      <option value="delete">Delete</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<div>
+  <table>
     <thead>
-      <tr>
-      <th><%= check_box_tag 'select_all', 'all', false, id: 'selectAllCheckbox' %></th>
-        <th>Tracking Number</th>
-        <th>Order ID</th>
-        <th>Notes</th>
-        <th>Status</th>
-        <th>Estimated Delivery Date</th>
-      </tr>
-    </thead>
+        <tr>
+          <th><%= check_box_tag 'select_all', 'all', false, id: 'selectAllCheckbox' %></th>
+          <th>Tracking Number</th>
+          <th>Order ID</th>
+          <th>Notes</th>
+          <th>Status</th>
+          <th>Estimated Delivery Date</th>
+        </tr>
+      </thead>
 
     <tbody>
       <% @deliveries.each do |delivery| %>

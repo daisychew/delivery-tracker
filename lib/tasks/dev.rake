@@ -11,18 +11,27 @@ task({ :sample_data => :environment}) do
     user.password = "password"
     user.save
 
-    chars = [('a'..'z'), ('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
+    chars = [('A'..'Z'), ('0'..'9')].map(&:to_a).flatten
     random_string = ''
 
     10.times do
       delivery = Delivery.new
       delivery.user_id = user.id
       delivery.notes = Faker::Commerce.product_name
-      delivery.tracking_number = rand(1000000000000)
+      delivery.tracking_number = rand(1000000000000000000000)
       delivery.order_number = (0...8).map { chars[rand(chars.length)] }.join
       delivery.arrived = [true, false].sample
 
       delivery.save
     end
+
+      delivery = Delivery.new
+      delivery.user_id = user.id
+      delivery.notes = Faker::Commerce.product_name
+      delivery.tracking_number = 92001902849408300167903689
+      delivery.order_number = (0...8).map { chars[rand(chars.length)] }.join
+      delivery.arrived = true
+
+      delivery.save
   end
 end

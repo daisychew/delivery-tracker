@@ -23,23 +23,45 @@ class DeliveryController < ApplicationController
  
     redirect_to("/")
   end
- 
-  def receive
-    delivery_id = params.fetch(:id)
-    delivery = Delivery.where(id: delivery_id).at(0)
-    delivery.arrived = true
-    delivery.save
 
-    redirect_to("/")
+  def action
+    selected_action = params[:action]
+    selected_packages = params[:selected_packages]
+
+    case selected_action
+    when 'mark_as_received'
+      selected_packages.each do |package_id|
+        delivery = Delivery.find(package_id)
+        delivery.update(arrived: true)
+      end
+      flash[:success] = "Selected packages marked as received."
+    when 'delete'
+      Delivery.destroy(selected_packages)
+      flash[:success] = "Selected packages deleted."
+    else
+      flash[:error] = "Invalid action."
+    end
+
+    redirect_back(fallback_location: root_path)
   end
  
- 
-  def delete
-    delivery_id = params.fetch(:id)
-    delivery = Delivery.where(id: delivery_id).at(0)
-    delivery.destroy
+  # def receive
+  #   delivery_id = params.fetch(:id)
+  #   delivery = Delivery.where(id: delivery_id).at(0)
+  #   delivery.arrived = true
+  #   delivery.save
 
-    redirect_to("/")
-  end
+  #   redirect_to("/")
+  # end
+ 
+ 
+  # def delete
+  #   delivery_id = params.fetch(:id)
+  #   delivery = Delivery.where(id: delivery_id).at(0)
+  #   delivery.destroy
+
+  #   redirect_to("/")
+  # end
+
  end
  

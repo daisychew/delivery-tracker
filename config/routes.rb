@@ -9,16 +9,16 @@ Rails.application.routes.draw do
 
   # Updating deliveries
 
-  post("insert_delivery", { :controller => "delivery", :action => "create" })
+  post("insert_delivery", controller: "delivery", :action => "create")
 
-  post("modify_delivery/:id", controller: "delivery", action: "receive")
+  post("modify_delivery", controller: "delivery", action: "receive")
  
-  get("delete_delivery/:id", controller: "delivery", action: "delete")
+  # get("delete_delivery/:id", controller: "delivery", action: "delete")
 
 
   # Utilize the tracking service API
 
-  get("tracking/:tracking_number", to: 'tracking#show')
+  get("delivery/:tracking_number", to: 'tracking#show')
   
   
   # Defines the root path route ("/")
