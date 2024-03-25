@@ -8,12 +8,6 @@ class DeliveryController < ApplicationController
     
     render(template: "delivery/index")
   end
-
-  def show
-    delivery_id = params.fetch(:id)
-
-    render(template: "delivery/show")
-  end
  
   def create
     delivery = Delivery.new
