@@ -11,7 +11,7 @@
     <thead>
       <tr>
       <th><%= check_box_tag 'select_all', 'all', false, id: 'selectAllCheckbox' %></th>
-        <th>USPS Tracking Number</th>
+        <th>Tracking Number</th>
         <th>Order ID</th>
         <th>Notes</th>
         <th>Status</th>
@@ -40,6 +40,8 @@
             <td>
               Delivered
             </td>
+            <td>
+              <%= delivery.delivery_date %>
           </tr>
         <% end %>
       <% end %>

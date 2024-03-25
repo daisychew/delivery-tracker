@@ -2,23 +2,24 @@ Rails.application.routes.draw do
   devise_for :users
 
   # Delivery views
-  get("delivery/all", controller: "deliveries", action: "index")
+  get("delivery/all", controller: "delivery", action: "index")
   
-  get("delivery/:id", controller: "deliveries", action: "show")
+  get("delivery/:id", controller: "delivery", action: "show")
+
 
   # Updating deliveries
 
-  post("insert_delivery", { :controller => "deliveries", :action => "create" })
+  post("insert_delivery", { :controller => "delivery", :action => "create" })
 
-  post("modify_delivery/:id", controller: "deliveries", action: "receive")
+  post("modify_delivery/:id", controller: "delivery", action: "receive")
  
-  get("delete_delivery/:id", controller: "deliveries", action: "delete")
+  get("delete_delivery/:id", controller: "delivery", action: "delete")
 
 
-  # USPS API
+  # Utilize the tracking service API
 
-  get("/track_usps", to: 'usps#track')
- 
+  get("tracking/:tracking_number", to: 'tracking#show')
+  
   
   # Defines the root path route ("/")
   root "delivery#homepage"
