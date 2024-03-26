@@ -37,19 +37,15 @@
               <td><%= delivery.tracking_number %></td>
               <td>#<%= delivery.order_number %></td>
               <td><%= delivery.notes %></td>
-
-              <% if !delivery.arrived %>
-              <td>
-              In transit
-              </td>
-              <% else %>
-              <td>
-                Delivered
-              </td>
-              <td>
-                <%= delivery.delivery_date %>
-              </td>
+              <% if delivery.delivery_date != nil %>
+                <% if delivery.delivery_date > Date.today %>
+                <td>In transit</td>
+                <% else %>
+               <td>Delivered</td>
+                <% end %>
               <% end %>
+
+              <td><%= delivery.delivery_date.strftime("%b %d, %Y") %></td>
             </tr>
         <% end %>
       </tbody>

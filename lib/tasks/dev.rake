@@ -18,20 +18,20 @@ task({ :sample_data => :environment}) do
       delivery = Delivery.new
       delivery.user_id = user.id
       delivery.notes = Faker::Commerce.product_name
-      delivery.tracking_number = rand(1000000000000000000000)
+      delivery.tracking_number = rand(10000000000000000000000000)
       delivery.order_number = (0...8).map { chars[rand(chars.length)] }.join
-      delivery.arrived = [true, false].sample
+      delivery.delivery_date = [Date.today - rand(365), Date.today + rand(72)].sample 
 
       delivery.save
     end
 
-      delivery = Delivery.new
-      delivery.user_id = user.id
-      delivery.notes = Faker::Commerce.product_name
-      delivery.tracking_number = 92001902849408300167903689
-      delivery.order_number = (0...8).map { chars[rand(chars.length)] }.join
-      delivery.arrived = true
+      # delivery = Delivery.new
+      # delivery.user_id = user.id
+      # delivery.notes = Faker::Commerce.product_name
+      # delivery.tracking_number = 92001902849408300167903689
+      # delivery.order_number = (0...8).map { chars[rand(chars.length)] }.join
+      # delivery.arrived = true
 
-      delivery.save
+      # delivery.save
   end
 end
