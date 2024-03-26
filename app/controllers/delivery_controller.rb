@@ -16,15 +16,14 @@ class DeliveryController < ApplicationController
  
   def create
     delivery = Delivery.new
-    delivery.description = params.fetch("query_description")
-    delivery.supposed_to_arrive_on = params.fetch("query_date")
-    delivery.details = params.fetch("query_details")
+    delivery.tracking_number = params.fetch("query_tracking")
+    delivery.order_number = params.fetch("query_number")
+    delivery.notes = params.fetch("query_notes")
     delivery.arrived = false
+    delivery.delivery_date = Date.today
 
-    if delivery.supposed_to_arrive_on != nil && delivery.description != nil
-      delivery.save
-      flash[:notice] = "Added to list"
-    end
+    delivery.save
+    flash[:notice] = "Added to list"
  
     redirect_to("/")
   end
