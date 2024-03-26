@@ -67,6 +67,10 @@ input[type="checkbox"] {
   margin-right: 5px; /* Add some spacing between checkboxes and their labels */
 }
 
+.pagination-space {
+  margin-right: 5px;
+}
+
 table {
   width: 90%; 
   margin: 0 auto;

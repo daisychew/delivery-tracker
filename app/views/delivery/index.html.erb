@@ -8,18 +8,16 @@
 
 <div>
   <form action="/modify_delivery" method="post">
-    <label for="action">Select Action:</label>
     <select name="action" id="action">
       <option value="mark_as_received">Mark as Received</option>
       <option value="delete">Delete</option>
     </select>
     <button type="submit">Submit</button>
-  </form>
-</div>
+    <br>
+    <br>
 
-<div>
-  <table>
-    <thead>
+    <table>
+      <thead>
         <tr>
           <th><%= check_box_tag 'select_all', 'all', false, id: 'selectAllCheckbox' %></th>
           <th>Tracking Number</th>
@@ -30,61 +28,74 @@
         </tr>
       </thead>
 
-    <tbody>
-      <% @deliveries.each do |delivery| %>
-          <tr>
-            <td>
-              <%= check_box_tag 'selected_packages[]', delivery.id %>
-            </td>
-            <td><%= delivery.tracking_number %></td>
-            <td>#<%= delivery.order_number %></td>
-            <td><%= delivery.notes %></td>
+      <tbody>
+        <% @deliveries.each do |delivery| %>
+            <tr>
+              <td>
+                <%= check_box_tag 'selected_packages[]', delivery.id, false, class: 'package-checkbox' %>
+              </td>
+              <td><%= delivery.tracking_number %></td>
+              <td>#<%= delivery.order_number %></td>
+              <td><%= delivery.notes %></td>
 
-            <% if !delivery.arrived %>
-            <td>
-              <form action="/modify_delivery/<%= delivery.id %>" method="post">
-                <input type="hidden" name="arrived" value="true">
-                <button type="submit">Mark as received</button>
-              </form>
-            </td>
-            <% else %>
-            <td>
-              Delivered
-            </td>
-            <td>
-              <%= delivery.delivery_date %>
-          </tr>
+              <% if !delivery.arrived %>
+              <td>
+              In transit
+              </td>
+              <% else %>
+              <td>
+                Delivered
+              </td>
+              <td>
+                <%= delivery.delivery_date %>
+              </td>
+              <% end %>
+            </tr>
         <% end %>
-      <% end %>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </form>
+</div>
+
+<div class="pagination">
+  <% if @total_pages > 1 %>
+    <span class="pagination-space">Page <%= @current_page %> of <%= @total_pages %></span>
+
+    <% if @current_page > 1 %>
+      <%= link_to 'Previous', deliveries_path(page: @current_page - 1), class: 'pagination-link' %>
+      <span class="pagination-space"></span> 
+    <% end %>
+
+    <% if @current_page < @total_pages %>
+      <span class="pagination-space"></span> 
+      <%= link_to 'Next', deliveries_path(page: @current_page + 1), class: 'pagination-link' %>
+    <% end %>
+  <% end %>
 </div>
 
 <script>
+  function markAsReceived(deliveryId) {
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/modify_delivery/' + deliveryId;
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'arrived';
+    input.value = true;
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     var selectAllCheckbox = document.getElementById('selectAllCheckbox');
-    console.log(selectAllCheckbox)
     if (selectAllCheckbox) {
       selectAllCheckbox.addEventListener('change', function() {
-        var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        console.log(checkboxes)
+        var checkboxes = document.querySelectorAll('input.package-checkbox');
         checkboxes.forEach(function(checkbox) {
           checkbox.checked = selectAllCheckbox.checked;
         });
       });
     }
-
-    var packageCheckboxes = document.querySelectorAll('.package-checkbox');
-    packageCheckboxes.forEach(function(checkbox) {
-      checkbox.addEventListener('change', function() {
-        var allChecked = true;
-        packageCheckboxes.forEach(function(checkbox) {
-          if (!checkbox.checked) {
-            allChecked = false;
-          }
-        });
-        selectAllCheckbox.checked = allChecked;
-      });
-    });
   });
 </script>

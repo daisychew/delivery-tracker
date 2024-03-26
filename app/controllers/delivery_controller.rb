@@ -4,7 +4,12 @@ class DeliveryController < ApplicationController
   end
 
   def index
-    @deliveries = Delivery.all
+    per_page = 25
+    @current_page = params.fetch(:page, 1).to_i
+    offset = (@current_page - 1) * per_page
+
+    @deliveries = Delivery.limit(per_page).offset(offset)
+    @total_pages = (Delivery.count.to_f / per_page).ceil
     
     render(template: "delivery/index")
   end
@@ -24,7 +29,7 @@ class DeliveryController < ApplicationController
     redirect_to("/")
   end
 
-  def action
+  def update_delivery
     selected_action = params[:action]
     selected_packages = params[:selected_packages]
 
