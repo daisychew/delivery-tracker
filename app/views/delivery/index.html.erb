@@ -7,9 +7,9 @@
 <hr>
 
 <div>
-    <input type="text" name="delivery_number" id="deliveryNumber" placeholder="Enter Delivery Number">
-    <button type="submit">Search</button>
-    
+    <!--<input type="text" name="order_number" id="order_number" placeholder="Enter Order Number">
+    <button type="submit">Search</button>-->
+
   <form id="delivery-form" action="/modify_delivery" method="post">
     <select name="action" id="action">
       <option value="mark_as_received">Mark as Received</option>
@@ -85,8 +85,15 @@ document.addEventListener("DOMContentLoaded", function() {
                 console.log("Delivery ID:", deliveryId);
                 markAsReceived(deliveryId);
             });
+
         } else if (action === 'delete') {
-            // Perform delete action here if needed
+            var checkboxes = document.querySelectorAll('.package-checkbox:checked');
+            
+            checkboxes.forEach(function(checkbox) {
+                var deliveryId = checkbox.value;
+                console.log("Delivery ID:", deliveryId);
+                markAsReceived(deliveryId);
+            });
 
 checkboxes.forEach(function(checkbox) {
                 var deliveryId = checkbox.value;
@@ -127,7 +134,6 @@ checkboxes.forEach(function(checkbox) {
     document.body.appendChild(form);
     form.submit();
   }
-
 
   document.addEventListener('DOMContentLoaded', function() {
     var selectAllCheckbox = document.getElementById('selectAllCheckbox');
