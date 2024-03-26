@@ -7,6 +7,9 @@
 <hr>
 
 <div>
+    <input type="text" name="delivery_number" id="deliveryNumber" placeholder="Enter Delivery Number">
+    <button type="submit">Search</button>
+    
   <form id="delivery-form" action="/modify_delivery" method="post">
     <select name="action" id="action">
       <option value="mark_as_received">Mark as Received</option>
@@ -69,22 +72,33 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Select all checkboxes with class 'package-checkbox'
-    var checkboxes = document.querySelectorAll('.package-checkbox');
+    var form = document.getElementById('delivery-form');
 
-    checkboxes.forEach(function(checkbox) {
-        // Add event listener for change event
-        checkbox.addEventListener('change', function() {
-            // Check if the checkbox is checked
-            if (this.checked) {
-                // Get the value of 'selected_packages[]'
-                var deliveryId = this.value;
+    form.onsubmit = function() {
+        var action = document.getElementById('action').value;
+
+        if (action === 'mark_as_received') {
+            var checkboxes = document.querySelectorAll('.package-checkbox:checked');
+            
+            checkboxes.forEach(function(checkbox) {
+                var deliveryId = checkbox.value;
                 console.log("Delivery ID:", deliveryId);
-                // You can perform any action with the delivery ID here
                 markAsReceived(deliveryId);
-            }
-        });
-    });
+            });
+        } else if (action === 'delete') {
+            // Perform delete action here if needed
+
+checkboxes.forEach(function(checkbox) {
+                var deliveryId = checkbox.value;
+                console.log("Delivery ID:", deliveryId);
+                deleteDelivery(deliveryId);
+            });
+            console.log("Performing delete action");
+        }
+
+        // Prevent the default form submission
+        return false;
+    };
 });
 
   function markAsReceived(deliveryId) {
@@ -99,6 +113,21 @@ document.addEventListener("DOMContentLoaded", function() {
     document.body.appendChild(form);
     form.submit();
   }
+
+
+  function deleteDelivery(deliveryId) {
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = '/delete_delivery/' + deliveryId;
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'arrived';
+    input.value = true;
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+  }
+
 
   document.addEventListener('DOMContentLoaded', function() {
     var selectAllCheckbox = document.getElementById('selectAllCheckbox');
