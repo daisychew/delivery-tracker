@@ -29,7 +29,7 @@ class DeliveryController < ApplicationController
     redirect_to("/")
   end
 
-  def update_delivery
+  def update
     selected_action = params[:action]
     selected_packages = params[:selected_packages]
 
@@ -50,23 +50,23 @@ class DeliveryController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
  
-  # def receive
-  #   delivery_id = params.fetch(:id)
-  #   delivery = Delivery.where(id: delivery_id).at(0)
-  #   delivery.arrived = true
-  #   delivery.save
+  def receive
+    delivery_id = params.fetch(:id)
+    delivery = Delivery.where(id: delivery_id).at(0)
+    delivery.arrived = true
+    delivery.save
 
-  #   redirect_to("/")
-  # end
+    redirect_to("/delivery/all")
+  end
  
  
-  # def delete
-  #   delivery_id = params.fetch(:id)
-  #   delivery = Delivery.where(id: delivery_id).at(0)
-  #   delivery.destroy
+  def delete
+    delivery_id = params.fetch(:id)
+    delivery = Delivery.where(id: delivery_id).at(0)
+    delivery.destroy
 
-  #   redirect_to("/")
-  # end
+    redirect_to("/delivery/all")
+  end
 
  end
  

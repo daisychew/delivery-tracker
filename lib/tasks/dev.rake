@@ -20,7 +20,9 @@ task({ :sample_data => :environment}) do
       delivery.notes = Faker::Commerce.product_name
       delivery.tracking_number = rand(10000000000000000000000000)
       delivery.order_number = (0...8).map { chars[rand(chars.length)] }.join
-      delivery.delivery_date = [Date.today - rand(365), Date.today + rand(72)].sample 
+      delivery.delivery_date = [Date.today - rand(365), Date.today + rand(72)].sample
+
+      delivery.arrived = delivery.delivery_date <= Date.today
 
       delivery.save
     end

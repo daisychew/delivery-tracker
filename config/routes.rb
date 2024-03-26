@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
   post("/insert_delivery", controller: "delivery", action: "create")
 
-  post("/modify_delivery", controller: "delivery", action: "update_delivery")
+  post("/modify_delivery", controller: "delivery", action: "update")
+
+  post("/receive_delivery/:id", controller: "delivery", action: "receive")
  
-  # get("delete_delivery/:id", controller: "delivery", action: "delete")
+  get("/delete_delivery/:id", controller: "delivery", action: "delete")
 
 
   # Utilize the tracking service API
